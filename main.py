@@ -130,8 +130,8 @@ def vieon():
     except requests.exceptions.RequestException:
         print("VIEON | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
 
-if count > 200:
-    count = 201
+if count > 9998888:
+    count = 99999989
 
 def myviettel():
     headers = {
