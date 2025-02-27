@@ -19,13 +19,13 @@ http = urllib3.PoolManager(
 sdt = input("Nhập số điện thoại: ")
 
 # Nhập số lần count
-count = input("Nhập số lần: ")
+count = input("nhập số lẩn:")
 
 # Chuyển count sang kiểu int
 try:
     count = int(count)
 except ValueError:
-    print("Số lần không hợp lệ, vui lòng nhập số.")
+    print("Số lần khô ng hợp lệ, vui lòng nhập số.")
     sys.exit()
 
 def sdtt(sdt):
