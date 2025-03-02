@@ -12,3 +12,14 @@ language = "python3"
 [deployment]
 run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
+
+[workflows]
+runButton = "Trình gọi tự động"
+
+[[workflows.workflow]]
+name = "Trình gọi tự động"
+author = 40130440
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python main.py"
