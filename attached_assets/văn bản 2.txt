@@ -1,0 +1,165 @@
+<! DOCTYPE html> <html lang="en">
+<head>
+<meta charset="UTF-8">
+‹meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+«title>Spam Tool</title>
+‹style>
+body f
+font-family: Arial, sans-serif; margin: 0; padding: 0;
+background-color: #f4f4f4;
+}
+header {
+background-color: #4CAF50; color: white;
+text-align: center;
+padding: 1em 0;
+}
+h1, h2 t
+margin: 0;
+}
+•container {
+width: 80%;
+margin: 20px auto; padding: 20px;
+background-color: white; border-radius: 8px;
+box-shadow: 0 0 10px rgbalo, 0, 0,
+0.1) ;
+}
+label, input, select 1 display: block; margin: 10px 0;
+｝
+input, select f width: 100%; padding: 10px; border-radius: 4px;
+border: 1px solid #Cc;
+}
+button +
+
+background-color: #4CAF50; color: white;
+padding: 10px 20px;
+border: none; border-radius: 4px;
+cursor: pointer;
+｝
+button: hover {
+background-color: #45a049;
+}
+•status { margin-top: 20px;
+padding: 15px;
+background-color: #e7f9e7; border: 1px solid #d4edda;
+color: #155724; border-radius: 4px;
+display: none;
+}
+status.error 1
+background-color: #f8d7da; border-color: #f5c6cb; color: #721C24;
+}
+table 1
+width: 100%;
+border-collapse: collapse;
+}
+table, th, td {
+border: 1px solid #ddd;
+}
+th, td i padding: 10px; text-align: left;
+}
+th {
+background-color: #f4f4f4;
+}
+</ style>
+</ head> <body>
+<header>
+</ header>
+<h1>Spam SMS/Call Tool</h1>
+
+<label for="phone_numbers">Phone
+Numbers (separate with "|"): </ label>
+<input type="text"
+id="phone_numbers" name="phone_numbers" required>
+<label for="count">Number of times
+to spam: </ label>
+<input type="number" id="count"
+name="count" max="999" required>
+<label for="method">Select Method:
+</ label>
+<select id="method" name="method">
+‹option
+value="sms">SMS</option>
+‹option
+value="call">Call</option>
+</ select>
+<button type="submit">Start
+Spam</ button>
+</ form>
+<div class="status"
+id="statusMessage">/div>
+<script>
+document.getElementById( 'spamForm').addEventLi
+stener ('submit', function (event) {
+event.preventDefault); /1
+Prevent the form from submitting immediately
+/I Show "Spam started" status const statusmessag
+
+const statusMessage =
+document.getElementById( 'statusMessage');
+statusMessage. textContent = 'Spam
+started for the given numbers.';
+statusMessage.classList.remove('error');
+statusMessage.classList.add ('success');
+statusMessage.style.display =
+'block';
+/I Simulate a slight delay before
+sending the request to show the status first
+setTimeout (function) {
+// Now submit the form data
+const formData = new
+FormData (event.target);
+fetch('/spam'
+, {
+method: 'POST', body: formData
+})
+"then (response =>
+response.json())
+•then (data → {
+if (data-status ===
+'error') {
+statusMessage.textContent = data-message;
+statusMessage. classList. remove('success');
+statusMessage.classList.add ('error');
+})
+-catch(error => 1
+statusMessage.textContent
+= 'An error occurred. Please try again.';
+statusMessage.classList. remove( 'success');
+
+const statusMessage =
+document.getElementById( 'statusMessage');
+statusMessage. textContent = 'Spam
+started for the given numbers.';
+statusMessage.classList.remove('error');
+statusMessage.classList.add ('success');
+statusMessage.style.display =
+'block';
+/I Simulate a slight delay before
+sending the request to show the status first
+setTimeout (function) {
+// Now submit the form data
+const formData = new
+FormData (event.target);
+fetch('/spam'
+, {
+method: 'POST', body: formData
+})
+"then (response =>
+response.json())
+•then (data → {
+if (data-status ===
+'error') {
+statusMessage.textContent = data-message;
+statusMessage. classList. remove('success');
+statusMessage.classList.add ('error');
+})
+-catch(error => 1
+statusMessage.textContent
+= 'An error occurred. Please try again.';
+
+statusMessage.classList.add ('error');
+}) ;
+3, 1000); // Delay of 1 second
+}) ;
+</script>
+</ body> </html>
